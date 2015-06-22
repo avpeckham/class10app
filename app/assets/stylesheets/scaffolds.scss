@@ -4,6 +4,7 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  margin: 0 50px; 
 }
 
 p, ol, ul, td {
@@ -33,6 +34,12 @@ div {
   &.field, &.actions {
     margin-bottom: 10px;
   }
+}
+
+h1{
+  text-align: center; 
+  color: blue; 
+  padding-bottom: 30px; 
 }
 
 #notice {

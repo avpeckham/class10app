@@ -1,46 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tweets!</h1>
-
-<span>My Tweets</span>
-<span>All Tweets</span>
 
 <table>
 
-  <% if user_signed_in? %>
 
-  <%= link_to('Edit Preferences', edit_user_registration_path) %>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-
-<% else %>
-
-  <%= link_to('Register', new_user_registration_path)  %> or
-  <%= link_to('Login', new_user_session_path)  %>  
-
-<% end %>
-
-<% if user_signed_in? %>
-  <% current_user.tweets.each do |tweet| %>
-    <tr>
-      <td><%= tweet.content %></td>
-      <td><%= link_to 'Show', tweet %></td>
-          <% if current_user.id == tweet.user_id %>
-            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-            <% end %>      
-      <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-
-<% else %>
   <% Tweet.all.each do |tweet| %>
-    <tr>
       <td><%= tweet.content %></td>
       <td><%= link_to 'Show', tweet %></td>
-    </td>
+          <% if user_signed_in? && current_user.id == tweet.user_id %>
+            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+            <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+          <% end %>  
     </tr>
   <% end %>
-
-<% end %>
 
 </table>
 

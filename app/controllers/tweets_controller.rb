@@ -12,8 +12,6 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all
   end
 
-  def tweet_page
-  end
 
   # GET /tweets/1
   # GET /tweets/1.json

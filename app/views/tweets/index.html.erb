@@ -1,23 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Tweets!</h1>
 
-<span>My Tweets</span>
-<span>All Tweets</span>
 
 <table>
 
-  <% if user_signed_in? %>
 
-  <%= link_to('Edit Preferences', edit_user_registration_path) %>
-  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-
-<% else %>
-
-  <%= link_to('Register', new_user_registration_path)  %> or
-  <%= link_to('Login', new_user_session_path)  %>  
-
-<% end %>
 
 <% if user_signed_in? %>
   <% current_user.tweets.each do |tweet| %>
@@ -32,13 +19,7 @@
   <% end %>
 
 <% else %>
-  <% Tweet.all.each do |tweet| %>
-    <tr>
-      <td><%= tweet.content %></td>
-      <td><%= link_to 'Show', tweet %></td>
-    </td>
-    </tr>
-  <% end %>
+  <p class="notice">You must be <%= link_to('logged in', new_user_session_path)  %> to view, edit, or delete your tweets. </p>
 
 <% end %>
 
